@@ -1,12 +1,12 @@
 <?php
 
-namespace yiidreamteam\i18n\components;
+namespace yarcode\i18n\components;
 
 use Yii;
 use yii\base\InvalidConfigException;
 use yii\i18n\DbMessageSource;
 use yii\i18n\MissingTranslationEvent;
-use yiidreamteam\i18n\models\SourceMessage;
+use yarcode\i18n\models\SourceMessage;
 
 class I18N extends \yii\i18n\I18N
 {
@@ -28,7 +28,7 @@ class I18N extends \yii\i18n\I18N
     public $languages;
     
     /** @var array */
-    public $missingTranslationHandler = ['\yiidreamteam\i18n\components\I18N', 'missingTranslation'];
+    public $missingTranslationHandler = ['\yarcode\i18n\components\I18N', 'missingTranslation'];
 
     /** @var string */
     public $autoSetLanguage = true;

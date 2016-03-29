@@ -14,13 +14,13 @@ The preferred way to install this extension is through [Composer](http://getcomp
 Either run
 
 ```
-php composer.phar require yii-dream-team/yii2-i18n "dev-master"
+php composer.phar require yarcode/yii2-i18n-yarcode "dev-master"
 ```
 
 or add
 
 ```
-"yii-dream-team/yii2-i18n": "dev-master"
+"yarcode/yii2-i18n-yarcode": "dev-master"
 ```
 
 to the require section of your ```composer.json```
@@ -33,7 +33,7 @@ Configure i18n component in your config file(for advanced application, use commo
 'components' => [
     ...,
     'i18n' => [
-        'class' => yiidreamteam\i18n\components\I18N::className(),
+        'class' => yarcode\i18n\components\I18N::className(),
         'autoSetLanguage' => true,
         'languages' => [
             'en-EN' => 'English',
@@ -41,7 +41,7 @@ Configure i18n component in your config file(for advanced application, use commo
             'ru-RU' => 'Русский',
         ],
         'defaultLanguage' => 'en-EN',
-        'on missingTranslation' => ['yiidreamteam\i18n\Module', 'missingTranslation']
+        'on missingTranslation' => ['yarcode\i18n\Module', 'missingTranslation']
     ],
     ...
 ]
@@ -53,7 +53,7 @@ And connect module at backend application:
 ```php
 'modules' => [
     ...,
-    'i18n' => yiidreamteam\i18n\Module::className(),
+    'i18n' => yarcode\i18n\Module::className(),
     ...
 ]
 ```
@@ -61,7 +61,7 @@ And connect module at backend application:
 Run migration:
 
 ```
-php yii migrate --migrationPath=@vendor/yii-dream-team/yii2-i18n/src/migrations
+php yii migrate --migrationPath=@vendor/yii-dream-team/yii2-i18n-yarcode/src/migrations
 ```
 
 Go to ```http://backend.yourdomain.com/translations``` for translating your messages

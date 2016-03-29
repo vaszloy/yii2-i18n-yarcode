@@ -8,8 +8,8 @@ use yii\helpers\Html;
 use yii\web\View;
 use yii\widgets\ActiveForm;
 use yii\widgets\Breadcrumbs;
-use yiidreamteam\i18n\models\SourceMessage;
-use yiidreamteam\i18n\backend\Module;
+use yarcode\i18n\models\SourceMessage;
+use yarcode\i18n\backend\Module;
 
 $this->title = Module::t('Update') . ': ' . $model->message;
 echo Breadcrumbs::widget(['links' => [

@@ -1,11 +1,11 @@
 <?php
 
-namespace yiidreamteam\i18n\models;
+namespace yarcode\i18n\models;
 
 use Yii;
 use yii\base\InvalidConfigException;
 use yii\db\ActiveRecord;
-use yiidreamteam\i18n\backend\Module;
+use yarcode\i18n\backend\Module;
 
 class Message extends ActiveRecord
 {

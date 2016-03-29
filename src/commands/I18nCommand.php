@@ -1,14 +1,14 @@
 <?php
 
-namespace yiidreamteam\i18n\commands;
+namespace yarcode\i18n\commands;
 
 use Yii;
 use yii\console\Controller;
 use yii\console\Exception;
 use yii\helpers\FileHelper;
 use yii\helpers\VarDumper;
-use yiidreamteam\i18n\models\Message;
-use yiidreamteam\i18n\models\SourceMessage;
+use yarcode\i18n\models\Message;
+use yarcode\i18n\models\SourceMessage;
 
 class I18nCommand extends Controller
 {

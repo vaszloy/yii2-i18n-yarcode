@@ -1,6 +1,6 @@
 <?php 
 
-namespace yiidreamteam\i18n\widgets;
+namespace yarcode\i18n\widgets;
 
 use Yii;
 

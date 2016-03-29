@@ -1,6 +1,6 @@
 <?php
 
-namespace yiidreamteam\i18n\models;
+namespace yarcode\i18n\models;
 
 use Yii;
 use yii\db\ActiveQuery;

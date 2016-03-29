@@ -1,12 +1,12 @@
 <?php
 
-namespace yiidreamteam\i18n\models;
+namespace yarcode\i18n\models;
 
 use yii\base\InvalidConfigException;
 use Yii;
 use yii\db\ActiveRecord;
-use yiidreamteam\i18n\models\SourceMessageQuery;
-use yiidreamteam\i18n\backend\Module;
+use yarcode\i18n\models\SourceMessageQuery;
+use yarcode\i18n\backend\Module;
 
 class SourceMessage extends ActiveRecord
 {
