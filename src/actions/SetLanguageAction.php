@@ -1,10 +1,10 @@
 <?php
 
-namespace yiidreamteam\i18n\actions;
+namespace yarcode\i18n\actions;
 
 use Yii;
 use yii\base\Action;
-use yiidreamteam\i18n\backend\Module;
+use yarcode\i18n\backend\Module;
 use yii\base\InvalidParamException;
 
 /**

@@ -1,11 +1,11 @@
 <?php
 
-namespace yiidreamteam\i18n;
+namespace yarcode\i18n;
 
 use yii\base\BootstrapInterface;
 use Yii;
 use yii\data\Pagination;
-use yiidreamteam\i18n\commands\I18nCommand;
+use yarcode\i18n\commands\I18nCommand;
 
 class Bootstrap implements BootstrapInterface
 {

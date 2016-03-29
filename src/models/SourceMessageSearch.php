@@ -1,11 +1,11 @@
 <?php
 
-namespace yiidreamteam\i18n\models;
+namespace yarcode\i18n\models;
 
 use yii\data\ActiveDataProvider;
 use Yii;
 use yii\helpers\ArrayHelper;
-use yiidreamteam\i18n\backend\Module;
+use yarcode\i18n\backend\Module;
 
 class SourceMessageSearch extends SourceMessage
 {

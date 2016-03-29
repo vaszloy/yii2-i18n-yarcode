@@ -1,10 +1,10 @@
 <?php 
 
-namespace yiidreamteam\i18n\widgets;
+namespace yarcode\i18n\widgets;
 
 use Yii;
 use yii\base\Widget;
-use yiidreamteam\i18n\components\I18N;
+use yarcode\i18n\components\I18N;
 
 class MissingTranslationWidget extends Widget
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace yiidreamteam\i18n\backend;
+namespace yarcode\i18n\backend;
 
 use Yii;
 use yii\base\Module as YiiModule;
@@ -12,11 +12,11 @@ class Module extends YiiModule
 
     public $prefix;
 
-    public $controllerNamespace = 'yiidreamteam\i18n\backend\controllers';
+    public $controllerNamespace = 'yarcode\i18n\backend\controllers';
 
     public static function t($message, $params = [], $language = null)
     {
-        return Yii::t('yiidreamteam/i18n', $message, $params, $language);
+        return Yii::t('yarcode/i18n', $message, $params, $language);
     }
 
 }

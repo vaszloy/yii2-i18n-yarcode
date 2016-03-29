@@ -1,16 +1,16 @@
 <?php
 
-namespace yiidreamteam\i18n\actions;
+namespace yarcode\i18n\actions;
 
 use Yii;
 use yii\base\Action;
 use yii\bootstrap\Alert;
 use yii\db\Exception;
-use yiidreamteam\i18n\models\Message;
+use yarcode\i18n\models\Message;
 
 /**
  * Class MissingTranslationAction
- * @package yiidreamteam\i18n\actions
+ * @package yarcode\i18n\actions
  */
 class MissingTranslationAction extends Action
 {

@@ -1,5 +1,5 @@
 {
-    "name": "yii-dream-team/yii2-i18n",
+    "name": "yarcode/yii2-i18n-yarcode",
     "description": "Yii2 i18n module to manage project translation",
     "version": "0.0.1",
     "type": "yii2-extension",
@@ -10,7 +10,7 @@
         "translations",
         "internatiolization"
     ],
-    "homepage": "https://github.com/yii-dream-team/yii2-i18n",
+    "homepage": "https://github.com/yarcode/yii2-i18n-yarcode",
     "time": "2014-11-06",
     "license": "MIT",
     "authors": [
@@ -22,8 +22,8 @@
         }
     ],
     "support": {
-        "issues": "https://github.com/yii-dream-team/yii2-i18n/issues",
-        "source": "https://github.com/yii-dream-team/yii2-i18n"
+        "issues": "https://github.com/yarcode/yii2-i18n-yarcode/issues",
+        "source": "https://github.com/yarcode/yii2-i18n-yarcode"
     },
     "require": {
         "yiisoft/yii2": "~2",
@@ -32,10 +32,10 @@
     },
     "autoload": {
         "psr-4": {
-            "yiidreamteam\\i18n\\": "./src"
+            "yarcode\\i18n\\": "./src"
         }
     },
     "extra": {
-        "bootstrap": "yiidreamteam\\i18n\\Bootstrap"
+        "bootstrap": "yarcode\\i18n\\Bootstrap"
     }
 }
