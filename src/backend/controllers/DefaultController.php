@@ -77,7 +77,8 @@ class DefaultController extends Controller
         if(!Yii::$app->request->post('hasEditable', false))
             return;
 
-        $key = unserialize(Yii::$app->request->post('editableKey', false));
+        //$key = unserialize(Yii::$app->request->post('editableKey', false));
+        $key = json_decode(Yii::$app->request->post('editableKey', false), true);
         if(empty($key))
             return;
 
