@@ -117,8 +117,6 @@ class I18N extends \yii\i18n\I18N
 
         if ($this->autoSetLanguage) {
             $this->setLanguage();
-        } else {
-            \Yii::$app->language = \Yii::$app->session->get($this->languageSessionKey, \Yii::$app->language);
         }
 
         parent::init();
