@@ -7,7 +7,7 @@
         "i18n",
         "translation",
         "translations",
-        "internatiolization"
+        "internationalization"
     ],
     "homepage": "https://github.com/yarcode/yii2-i18n-yarcode",
     "time": "2014-11-06",

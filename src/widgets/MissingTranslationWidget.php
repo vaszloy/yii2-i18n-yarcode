@@ -1,11 +1,15 @@
-<?php 
+<?php
 
 namespace yarcode\i18n\widgets;
 
+use yarcode\i18n\components\I18N;
 use Yii;
 use yii\base\Widget;
-use yarcode\i18n\components\I18N;
 
+/**
+ * Class MissingTranslationWidget
+ * @package yarcode\i18n\widgets
+ */
 class MissingTranslationWidget extends Widget
 {
 
@@ -18,8 +22,11 @@ class MissingTranslationWidget extends Widget
     /** @var $url */
     public $url;
 
-	public function run()
-	{
+    /**
+     * @return string
+     */
+    public function run()
+    {
         if ($this->existMissingTranslations()) {
             return $this->render('missingTranslationWidget', [
                 'url' => $this->url,
@@ -27,18 +34,24 @@ class MissingTranslationWidget extends Widget
                 'missingTranslations' => $this->missingTranslations,
             ]);
         }
-	}
+    }
 
+    /**
+     * @return bool
+     */
+    private function existMissingTranslations()
+    {
+        return $this->setMissingTranslations() && $this->url && Yii::$app->user->can($this->accessRole);
+    }
+
+    /**
+     * @return mixed
+     */
     public function setMissingTranslations()
     {
         $this->missingTranslations = Yii::$app->cache->get(I18N::MISSING_TRANSLATIONS_KEY);
         Yii::$app->cache->delete(I18N::MISSING_TRANSLATIONS_KEY);
         return $this->missingTranslations;
-    }
-
-    private function existMissingTranslations()
-    {
-        return $this->setMissingTranslations() && $this->url && Yii::$app->user->can($this->accessRole);
     }
 
 }

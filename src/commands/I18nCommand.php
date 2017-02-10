@@ -2,14 +2,18 @@
 
 namespace yarcode\i18n\commands;
 
+use yarcode\i18n\models\Message;
+use yarcode\i18n\models\SourceMessage;
 use Yii;
 use yii\console\Controller;
 use yii\console\Exception;
 use yii\helpers\FileHelper;
 use yii\helpers\VarDumper;
-use yarcode\i18n\models\Message;
-use yarcode\i18n\models\SourceMessage;
 
+/**
+ * Class I18nCommand
+ * @package yarcode\i18n\commands
+ */
 class I18nCommand extends Controller
 {
     /**
@@ -48,65 +52,6 @@ class I18nCommand extends Controller
             }
         }
         echo PHP_EOL . 'Done.' . PHP_EOL;
-    }
-
-    /**
-     * @param string $messagePath
-     * @param string $category
-     * @throws Exception
-     */
-    public function actionExport($messagePath = null, $category = null)
-    {
-        if (!$messagePath) {
-            $messagePath = $this->prompt('Enter a message path');
-        }
-        $messagePath = realpath(Yii::getAlias($messagePath));
-        if (!is_dir($messagePath)) {
-            throw new Exception('The message path ' . $messagePath . ' is not a valid directory.');
-        }
-
-        if (!$category) {
-            $category = $this->prompt('Enter an exporting category');
-        }
-        if (empty($category)) {
-            throw new Exception('The $category is empty.');
-        }
-
-        $sourceMessages = SourceMessage::find()
-            ->where('category = :category', [':category' => $category])
-            ->orderBy('message')
-            ->all();
-
-        $messages = [];
-
-        foreach ($sourceMessages as $sourceMessage) {
-            $translations = $sourceMessage->messages;
-            foreach (Yii::$app->getI18n()->languages as $language) {
-                $messages[$language][$sourceMessage['message']] = isset($translations[$language]) && !empty($translations[$language]['translation']) ? $translations[$language]['translation'] : '';
-            }
-        }
-
-        foreach ($messages as $language => $translations) {
-            $translationsFile = FileHelper::normalizePath($messagePath . DIRECTORY_SEPARATOR . $language . DIRECTORY_SEPARATOR . str_replace('\\', '/', $category) . '.php');
-            if (!is_file($translationsFile)) {
-                $dir = dirname($translationsFile);
-                if (!FileHelper::createDirectory($dir)) {
-                    throw new Exception('Directory ' . $dir . ' is not created');
-                }
-            }
-            ksort($translations);
-
-            $array = VarDumper::export($translations);
-            $content = <<<EOD
-<?php
-
-return $array;
-
-EOD;
-
-            file_put_contents($translationsFile, $content);
-            echo PHP_EOL . 'Saved to ' . $translationsFile . PHP_EOL;
-        }
     }
 
     /**
@@ -154,6 +99,69 @@ EOD;
         }
     }
 
+    /**
+     * @param string $messagePath
+     * @param string $category
+     * @throws Exception
+     */
+    public function actionExport($messagePath = null, $category = null)
+    {
+        if (!$messagePath) {
+            $messagePath = $this->prompt('Enter a message path');
+        }
+        $messagePath = realpath(Yii::getAlias($messagePath));
+        if (!is_dir($messagePath)) {
+            throw new Exception('The message path ' . $messagePath . ' is not a valid directory.');
+        }
+
+        if (!$category) {
+            $category = $this->prompt('Enter an exporting category');
+        }
+        if (empty($category)) {
+            throw new Exception('The $category is empty.');
+        }
+
+        $sourceMessages = SourceMessage::find()
+            ->where('category = :category', [':category' => $category])
+            ->orderBy('message')
+            ->all();
+
+        $messages = [];
+
+        foreach ($sourceMessages as $sourceMessage) {
+            $translations = $sourceMessage->messages;
+            foreach (Yii::$app->getI18n()->languages as $language) {
+                $messages[$language][$sourceMessage['message']] = isset($translations[$language]) && !empty($translations[$language]['translation']) ? $translations[$language]['translation'] : '';
+            }
+        }
+
+        foreach ($messages as $language => $translations) {
+            $translationsFile = FileHelper::normalizePath($messagePath . DIRECTORY_SEPARATOR . $language . DIRECTORY_SEPARATOR . str_replace('\\',
+                    '/', $category) . '.php');
+            if (!is_file($translationsFile)) {
+                $dir = dirname($translationsFile);
+                if (!FileHelper::createDirectory($dir)) {
+                    throw new Exception('Directory ' . $dir . ' is not created');
+                }
+            }
+            ksort($translations);
+
+            $array = VarDumper::export($translations);
+            $content = <<<EOD
+<?php
+
+return $array;
+
+EOD;
+
+            file_put_contents($translationsFile, $content);
+            echo PHP_EOL . 'Saved to ' . $translationsFile . PHP_EOL;
+        }
+    }
+
+    /**
+     *
+     */
     public function actionFlush()
     {
         $tableNames = [

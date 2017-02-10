@@ -4,8 +4,14 @@ use yii\base\InvalidConfigException;
 use yii\db\Migration;
 use yii\db\Schema;
 
+/**
+ * Class m141106_000001_i18n_module_init
+ */
 class m141106_000001_i18n_module_init extends Migration
 {
+    /**
+     * @throws InvalidConfigException
+     */
     public function up()
     {
         $i18n = Yii::$app->getI18n();
@@ -17,7 +23,7 @@ class m141106_000001_i18n_module_init extends Migration
 
         $this->createTable($sourceMessageTable, [
             'id' => Schema::TYPE_PK,
-            'category' => Schema::TYPE_STRING.'(32) DEFAULT NULL',
+            'category' => Schema::TYPE_STRING . '(32) DEFAULT NULL',
             'message' => Schema::TYPE_TEXT
         ]);
 
@@ -30,6 +36,9 @@ class m141106_000001_i18n_module_init extends Migration
         $this->addForeignKey('FK_message_source_message_id', $messageTable, 'id', $sourceMessageTable, 'id', 'cascade');
     }
 
+    /**
+     * @throws InvalidConfigException
+     */
     public function down()
     {
         $i18n = Yii::$app->getI18n();

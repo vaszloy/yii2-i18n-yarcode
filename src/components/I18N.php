@@ -8,9 +8,12 @@ use yii\base\InvalidConfigException;
 use yii\i18n\DbMessageSource;
 use yii\i18n\MissingTranslationEvent;
 
+/**
+ * Class I18N
+ * @package yarcode\i18n\components
+ */
 class I18N extends \yii\i18n\I18N
 {
-
     const MISSING_TRANSLATIONS_KEY = 'missingTranslations';
     const EXISTING_TRANSLATIONS_KEY = 'existingTranslations';
 
@@ -30,17 +33,20 @@ class I18N extends \yii\i18n\I18N
     /** @var array */
     public $missingTranslationHandler = ['\yarcode\i18n\components\I18N', 'missingTranslation'];
 
-    /** @var string */
+    /**
+     * In some cases we don't need to set Application Language automatically on component ::init()
+     * @var string
+     */
     public $autoSetLanguage = true;
 
     /** @var string $defaultLanguage a default user language, default to getLanguage() method */
     public $defaultLanguage;
 
     /** @var string */
-    public $languageSessionKey;
+    public $languageSessionKey = 'language';
 
     /** @var string */
-    public $languageParam;
+    public $languageParam = 'language';
 
     /** @var string $_language a reference to the language set */
     private $_language;
@@ -76,7 +82,6 @@ class I18N extends \yii\i18n\I18N
      */
     public function init()
     {
-
         if (!$this->languages) {
             throw new InvalidConfigException('You should configure i18n component [language]');
         }
@@ -85,16 +90,8 @@ class I18N extends \yii\i18n\I18N
             $this->defaultLanguage = Yii::$app->language;
         }
 
-        if(Yii::$app instanceof yii\console\Application) {
+        if (Yii::$app instanceof yii\console\Application) {
             $this->_language = $this->defaultLanguage;
-        }
-
-        if (empty($this->languageSessionKey)) {
-            $this->languageSessionKey = 'language';
-        }
-
-        if (empty($this->languageParam)) {
-            $this->languageParam = 'language';
         }
 
         if (!isset($this->translations['*'])) {
@@ -151,6 +148,7 @@ class I18N extends \yii\i18n\I18N
         }
 
         $this->_language = $language;
+
         return $language;
     }
 
@@ -171,6 +169,7 @@ class I18N extends \yii\i18n\I18N
         }
 
         Yii::$app->language = $language;
+
         return $language;
     }
 

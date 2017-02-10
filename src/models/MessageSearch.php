@@ -2,19 +2,21 @@
 
 namespace yarcode\i18n\models;
 
-use Yii;
 use yii\data\ActiveDataProvider;
-use yii\helpers\VarDumper;
 
+/**
+ * Class MessageSearch
+ * @package yarcode\i18n\models
+ */
 class MessageSearch extends Message
 {
-
     const MESSAGE_TRANSLATED_YES = 'yes';
-    const MESSAGE_TRANSLATED_NO  = 'no';
+    const MESSAGE_TRANSLATED_NO = 'no';
 
     public $category;
     public $source;
     public $translationStatus;
+
     public $prefix;
 
     /**
@@ -33,14 +35,17 @@ class MessageSearch extends Message
      */
     public function search($params)
     {
-        $query = Message::find()->joinWith(['sourceMessage' => function($query) {
-            $query->from(['sourceMessage' => SourceMessage::tableName()]);
-        }]);
+        $query = Message::find()->joinWith([
+            'sourceMessage' => function ($query) {
+                $query->from(['sourceMessage' => SourceMessage::tableName()]);
+            }
+        ]);
 
         $dataProvider = new ActiveDataProvider(['query' => $query]);
 
-        if($this->language)
+        if ($this->language) {
             $query->filterWhere(['language' => $this->language]);
+        }
 
         if ($this->prefix) {
             $query->andFilterWhere([
@@ -70,10 +75,11 @@ class MessageSearch extends Message
             }
         }
 
-        if($this->translationStatus === static::MESSAGE_TRANSLATED_YES)
+        if ($this->translationStatus === static::MESSAGE_TRANSLATED_YES) {
             $query->andWhere('translation IS NOT NULL AND translation <> ""');
-        elseif($this->translationStatus === static::MESSAGE_TRANSLATED_NO)
+        } elseif ($this->translationStatus === static::MESSAGE_TRANSLATED_NO) {
             $query->andWhere('translation IS NULL OR translation = ""');
+        }
 
         return $dataProvider;
     }

@@ -34,7 +34,6 @@ Configure i18n component in your config file(for advanced application, use commo
     ...,
     'i18n' => [
         'class' => yarcode\i18n\components\I18N::className(),
-        'autoSetLanguage' => true,
         'languages' => [
             'en-EN' => 'English',
             'es-ES' => 'Español',
@@ -65,8 +64,6 @@ php yii migrate --migrationPath=@vendor/yii-dream-team/yii2-i18n-yarcode/src/mig
 ```
 
 Go to ```http://backend.yourdomain.com/translations``` for translating your messages
-
-##Road map
 
 ##Authors
 

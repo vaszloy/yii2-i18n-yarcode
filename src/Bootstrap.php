@@ -2,11 +2,15 @@
 
 namespace yarcode\i18n;
 
-use yii\base\BootstrapInterface;
-use Yii;
-use yii\data\Pagination;
 use yarcode\i18n\commands\I18nCommand;
+use Yii;
+use yii\base\BootstrapInterface;
+use yii\data\Pagination;
 
+/**
+ * Class Bootstrap
+ * @package yarcode\i18n
+ */
 class Bootstrap implements BootstrapInterface
 {
     /**

@@ -2,11 +2,15 @@
 
 namespace yarcode\i18n\models;
 
+use yarcode\i18n\backend\Module;
 use Yii;
 use yii\base\InvalidConfigException;
 use yii\db\ActiveRecord;
-use yarcode\i18n\backend\Module;
 
+/**
+ * Class Message
+ * @package yarcode\i18n\models
+ */
 class Message extends ActiveRecord
 {
     /**
@@ -48,6 +52,9 @@ class Message extends ActiveRecord
         ];
     }
 
+    /**
+     * @return \yii\db\ActiveQuery
+     */
     public function getSourceMessage()
     {
         return $this->hasOne(SourceMessage::className(), ['id' => 'id']);

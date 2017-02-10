@@ -1,7 +1,8 @@
 <?php
 
-use yii\helpers\Html;
 use yii\bootstrap\BootstrapPluginAsset;
+use yii\helpers\Html;
+
 BootstrapPluginAsset::register($this);
 
 /** @var  \yii\web\View $this */
@@ -84,19 +85,19 @@ $this->registerCss($css);
                 ?>
                 <table class="table table-hover table-bordered">
                     <thead>
-                        <tr>
+                    <tr>
+                        <th>
+                            Категория, сообщение
+                        </th>
+                        <?php foreach ($languages as $language) : ?>
                             <th>
-                                Категория, сообщение
+                                Перевод для языка:
+                                <b>
+                                    <?php echo $language; ?>
+                                </b>
                             </th>
-                            <?php foreach ($languages as $language) : ?>
-                                <th>
-                                    Перевод для языка:
-                                    <b>
-                                        <?php echo $language; ?>
-                                    </b>
-                                </th>
-                            <?php endforeach; ?>
-                        </tr>
+                        <?php endforeach; ?>
+                    </tr>
                     </thead>
                     <?php foreach ($missingTranslations as $missingTranslation) : ?>
                         <tr>

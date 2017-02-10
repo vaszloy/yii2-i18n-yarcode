@@ -2,12 +2,15 @@
 
 namespace yarcode\i18n\models;
 
-use yii\base\InvalidConfigException;
-use Yii;
-use yii\db\ActiveRecord;
-use yarcode\i18n\models\SourceMessageQuery;
 use yarcode\i18n\backend\Module;
+use Yii;
+use yii\base\InvalidConfigException;
+use yii\db\ActiveRecord;
 
+/**
+ * Class SourceMessage
+ * @package yarcode\i18n\models
+ */
 class SourceMessage extends ActiveRecord
 {
     /**
@@ -23,6 +26,17 @@ class SourceMessage extends ActiveRecord
         return $i18n->sourceMessageTable;
     }
 
+    /**
+     * @return array|SourceMessage[]
+     */
+    public static function getCategories()
+    {
+        return SourceMessage::find()->select('category')->distinct('category')->asArray()->all();
+    }
+
+    /**
+     * @return SourceMessageQuery
+     */
     public static function find()
     {
         return new SourceMessageQuery(static::className());
@@ -51,19 +65,17 @@ class SourceMessage extends ActiveRecord
         ];
     }
 
+    /**
+     * @return $this
+     */
     public function getMessages()
     {
         return $this->hasMany(Message::className(), ['id' => 'id'])->indexBy('language');
     }
 
     /**
-     * @return array|SourceMessage[]
+     *
      */
-    public static function getCategories()
-    {
-        return SourceMessage::find()->select('category')->distinct('category')->asArray()->all();
-    }
-
     public function initMessages()
     {
         $messages = [];
@@ -79,6 +91,9 @@ class SourceMessage extends ActiveRecord
         $this->populateRelation('messages', $messages);
     }
 
+    /**
+     * @return array
+     */
     public function saveMessages()
     {
         $messages = [];

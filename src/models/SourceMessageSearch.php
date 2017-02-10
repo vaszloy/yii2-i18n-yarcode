@@ -2,17 +2,36 @@
 
 namespace yarcode\i18n\models;
 
-use yii\data\ActiveDataProvider;
-use Yii;
-use yii\helpers\ArrayHelper;
 use yarcode\i18n\backend\Module;
+use yii\data\ActiveDataProvider;
+use yii\helpers\ArrayHelper;
 
+/**
+ * Class SourceMessageSearch
+ * @package yarcode\i18n\models
+ */
 class SourceMessageSearch extends SourceMessage
 {
     const STATUS_TRANSLATED = 1;
     const STATUS_NOT_TRANSLATED = 2;
 
     public $status;
+
+    /**
+     * @param null $id
+     * @return array|mixed
+     */
+    public static function getStatus($id = null)
+    {
+        $statuses = [
+            self::STATUS_TRANSLATED => Module::t('Translated'),
+            self::STATUS_NOT_TRANSLATED => Module::t('Not translated'),
+        ];
+        if ($id !== null) {
+            return ArrayHelper::getValue($statuses, $id, null);
+        }
+        return $statuses;
+    }
 
     /**
      * @inheritdoc
@@ -51,17 +70,5 @@ class SourceMessageSearch extends SourceMessage
             ->andFilterWhere(['like', 'message', $this->message]);
 
         return $dataProvider;
-    }
-
-    public static function getStatus($id = null)
-    {
-        $statuses = [
-            self::STATUS_TRANSLATED => Module::t('Translated'),
-            self::STATUS_NOT_TRANSLATED => Module::t('Not translated'),
-        ];
-        if ($id !== null) {
-            return ArrayHelper::getValue($statuses, $id, null);
-        }
-        return $statuses;
     }
 }
