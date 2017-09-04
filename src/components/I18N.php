@@ -57,7 +57,7 @@ class I18N extends \yii\i18n\I18N
     public static function missingTranslation(MissingTranslationEvent $event)
     {
         $sourceMessage = SourceMessage::find()
-            ->where('category = :category and message = binary :message', [
+            ->where('category = :category and message = :message', [
                 ':category' => $event->category,
                 ':message' => $event->message
             ])
