@@ -74,7 +74,7 @@ class I18N extends \yii\i18n\I18N
         }
 
         $sourceMessage->initMessages();
-        $messages = $sourceMessage->saveMessages();
+        $sourceMessage->saveMessages();
     }
 
     /**
@@ -120,9 +120,48 @@ class I18N extends \yii\i18n\I18N
     }
 
     /**
+     * Returns current appliation language, if it's not set automatically detects and then returns
+     *
      * @return array|mixed|string
      */
     public function getLanguage()
+    {
+        return $this->_language = $this->detectLanguage();
+    }
+
+    /**
+     * Set
+     *
+     * @param null $language
+     * @return array|mixed|null|string
+     */
+    public function setLanguage($language = null)
+    {
+        if ($language === null) {
+            $language = $this->detectLanguage();
+        }
+
+        if (!array_key_exists($language, $this->languages)) {
+            throw new InvalidParamException(Yii::t("app", "Invalid language param"));
+        }
+
+        $this->_language = $language;
+
+        if (Yii::$app->has('session')) {
+            Yii::$app->session->set($this->languageSessionKey, $language);
+        }
+
+        Yii::$app->language = $language;
+
+        return $language;
+    }
+
+    /**
+     * Detects and returns current application language
+     *
+     * @return array|mixed|string
+     */
+    public function detectLanguage()
     {
         if ($this->_language !== null) {
             return $this->_language;
@@ -137,40 +176,9 @@ class I18N extends \yii\i18n\I18N
         }
 
         if (!array_key_exists($language, $this->languages)) {
-            if ($language === Yii::$app->sourceLanguage) {
-                $language = $this->defaultLanguage;
-            } elseif (strpos($language, "_") !== false) {
-                $language = substr($language, 0, 2);
-                if (!array_key_exists($language, $this->languages)) {
-                    $language = $this->defaultLanguage;
-                }
-            }
+            $language = $this->defaultLanguage;
         }
-
-        $this->_language = $language;
 
         return $language;
     }
-
-    /**
-     * @param null $language
-     * @return array|mixed|null|string
-     */
-    public function setLanguage($language = null)
-    {
-        if ($language === null) {
-            $language = $this->getLanguage();
-        }
-
-        $this->_language = $language;
-
-        if (Yii::$app->has('session')) {
-            Yii::$app->session->set($this->languageSessionKey, $language);
-        }
-
-        Yii::$app->language = $language;
-
-        return $language;
-    }
-
 }

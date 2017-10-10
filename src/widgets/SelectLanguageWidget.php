@@ -11,16 +11,16 @@ use Yii;
  */
 class SelectLanguageWidget extends \yii\base\Widget
 {
-    /** @var $viewFile you can specify your own view file */
+    /** @var string $viewFile you can specify your own view file */
     public $viewFile = 'selectLanguageWidget';
 
-    /** @var $selectedLanguage by default */
+    /** @var string $selectedLanguage by default */
     public $selectedLanguage;
 
-    /** @var $languages to select */
+    /** @var array $languages to select */
     public $languages = [];
 
-    /** @var $formAction where your i18n component change current user language */
+    /** @var mixed $formAction where your i18n component change current user language */
     public $formAction = null;
 
     /**
