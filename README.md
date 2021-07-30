@@ -14,13 +14,13 @@ The preferred way to install this extension is through [Composer](http://getcomp
 Either run
 
 ```
-php composer.phar require yarcode/yii2-i18n-yarcode "dev-master"
+php composer.phar require vaszloy/yii2-i18n-yarcode "dev-master"
 ```
 
 or add
 
 ```
-"yarcode/yii2-i18n-yarcode": "dev-master"
+"vaszloy/yii2-i18n-yarcode": "dev-master"
 ```
 
 to the require section of your ```composer.json```
@@ -33,14 +33,14 @@ Configure i18n component in your config file(for advanced application, use commo
 'components' => [
     ...,
     'i18n' => [
-        'class' => yarcode\i18n\components\I18N::className(),
+        'class' => vaszloy\i18n\components\I18N::className(),
         'languages' => [
             'en-EN' => 'English',
             'es-ES' => 'Español',
             'ru-RU' => 'Русский',
         ],
         'defaultLanguage' => 'en-EN',
-        'on missingTranslation' => ['yarcode\i18n\Module', 'missingTranslation']
+        'on missingTranslation' => ['vaszloy\i18n\Module', 'missingTranslation']
     ],
     ...
 ]
@@ -52,7 +52,7 @@ And connect module at backend application:
 ```php
 'modules' => [
     ...,
-    'i18n' => yarcode\i18n\Module::className(),
+    'i18n' => vaszloy\i18n\Module::className(),
     ...
 ]
 ```

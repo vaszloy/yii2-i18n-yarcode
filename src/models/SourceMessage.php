@@ -1,15 +1,15 @@
 <?php
 
-namespace yarcode\i18n\models;
+namespace vaszloy\i18n\models;
 
-use yarcode\i18n\backend\Module;
+use vaszloy\i18n\backend\Module;
 use Yii;
 use yii\base\InvalidConfigException;
 use yii\db\ActiveRecord;
 
 /**
  * Class SourceMessage
- * @package yarcode\i18n\models
+ * @package vaszloy\i18n\models
  */
 class SourceMessage extends ActiveRecord
 {

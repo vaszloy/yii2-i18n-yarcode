@@ -1,13 +1,13 @@
 <?php
 
-namespace yarcode\i18n\models;
+namespace vaszloy\i18n\models;
 
 use Yii;
 use yii\db\ActiveQuery;
 
 /**
  * Class SourceMessageQuery
- * @package yarcode\i18n\models
+ * @package vaszloy\i18n\models
  */
 class SourceMessageQuery extends ActiveQuery
 {

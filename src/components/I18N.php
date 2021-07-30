@@ -1,8 +1,8 @@
 <?php
 
-namespace yarcode\i18n\components;
+namespace vaszloy\i18n\components;
 
-use yarcode\i18n\models\SourceMessage;
+use vaszloy\i18n\models\SourceMessage;
 use Yii;
 use yii\base\InvalidConfigException;
 use yii\i18n\DbMessageSource;
@@ -10,7 +10,7 @@ use yii\i18n\MissingTranslationEvent;
 
 /**
  * Class I18N
- * @package yarcode\i18n\components
+ * @package vaszloy\i18n\components
  */
 class I18N extends \yii\i18n\I18N
 {
@@ -31,7 +31,7 @@ class I18N extends \yii\i18n\I18N
     public $languages;
 
     /** @var array */
-    public $missingTranslationHandler = ['\yarcode\i18n\components\I18N', 'missingTranslation'];
+    public $missingTranslationHandler = ['\vaszloy\i18n\components\I18N', 'missingTranslation'];
 
     /**
      * In some cases we don't need to set Application Language automatically on component ::init()

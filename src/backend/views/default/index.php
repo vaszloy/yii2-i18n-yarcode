@@ -11,8 +11,8 @@ use kartik\grid\GridView;
 use yii\helpers\Html;
 use yii\web\View;
 use yii\widgets\Breadcrumbs;
-use yarcode\i18n\models\SourceMessageSearch;
-use yarcode\i18n\backend\Module;
+use vaszloy\i18n\models\SourceMessageSearch;
+use vaszloy\i18n\backend\Module;
 
 $this->title = Module::t('Translations');
 echo Breadcrumbs::widget(['links' => [

@@ -1,6 +1,6 @@
 <?php
 
-namespace yarcode\i18n\actions;
+namespace vaszloy\i18n\actions;
 
 use Yii;
 use yii\base\Action;

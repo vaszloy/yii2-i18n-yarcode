@@ -1,6 +1,6 @@
 <?php
 
-namespace yarcode\i18n\backend\controllers;
+namespace vaszloy\i18n\backend\controllers;
 
 use yii\base\Model;
 use yii\filters\VerbFilter;
@@ -11,10 +11,10 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
 use Yii;
-use yarcode\i18n\models\MessageSearch;
-use yarcode\i18n\models\SourceMessage;
-use yarcode\i18n\models\Message;
-use yarcode\i18n\backend\Module;
+use vaszloy\i18n\models\MessageSearch;
+use vaszloy\i18n\models\SourceMessage;
+use vaszloy\i18n\models\Message;
+use vaszloy\i18n\backend\Module;
 
 class DefaultController extends Controller
 {

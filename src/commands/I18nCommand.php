@@ -1,9 +1,9 @@
 <?php
 
-namespace yarcode\i18n\commands;
+namespace vaszloy\i18n\commands;
 
-use yarcode\i18n\models\Message;
-use yarcode\i18n\models\SourceMessage;
+use vaszloy\i18n\models\Message;
+use vaszloy\i18n\models\SourceMessage;
 use Yii;
 use yii\console\Controller;
 use yii\console\Exception;
@@ -12,7 +12,7 @@ use yii\helpers\VarDumper;
 
 /**
  * Class I18nCommand
- * @package yarcode\i18n\commands
+ * @package vaszloy\i18n\commands
  */
 class I18nCommand extends Controller
 {
