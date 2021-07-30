@@ -1,5 +1,5 @@
 {
-    "name": "yarcode/yii2-i18n-yarcode",
+    "name": "vaszloy/yii2-i18n-yarcode",
     "description": "Yii2 i18n module to manage project translation",
     "type": "yii2-extension",
     "keywords": [
@@ -9,7 +9,7 @@
         "translations",
         "internationalization"
     ],
-    "homepage": "https://github.com/yarcode/yii2-i18n-yarcode",
+    "homepage": "https://github.com/vaszloy/yii2-i18n-yarcode",
     "time": "2014-11-06",
     "license": "MIT",
     "authors": [
