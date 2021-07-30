@@ -35,9 +35,15 @@ class I18N extends \yii\i18n\I18N
 
     /**
      * In some cases we don't need to set Application Language automatically on component ::init()
-     * @var string
+     * @var bool
      */
     public $autoSetLanguage = true;
+
+    /**
+     * Allows getting the preferred language
+     * @var bool
+     */
+    public $allowPreferredLanguage = true;
 
     /** @var string $defaultLanguage a default user language, default to getLanguage() method */
     public $defaultLanguage;
@@ -171,8 +177,10 @@ class I18N extends \yii\i18n\I18N
             $language = Yii::$app->request->post($this->languageParam);
         } elseif (Yii::$app->has('request') && Yii::$app->request->get($this->languageParam)) {
             $language = Yii::$app->request->get($this->languageParam);
-        } else {
+        } elseif ($this->allowPreferredLanguage === true) {
             $language = Yii::$app->request->getPreferredLanguage(array_keys($this->languages));
+        } else {
+            $language = $this->defaultLanguage;
         }
 
         if (!array_key_exists($language, $this->languages)) {
