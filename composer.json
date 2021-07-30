@@ -31,10 +31,10 @@
     },
     "autoload": {
         "psr-4": {
-            "yarcode\\i18n\\": "./src"
+            "vaszloy\\i18n\\": "./src"
         }
     },
     "extra": {
-        "bootstrap": "yarcode\\i18n\\Bootstrap"
+        "bootstrap": "vaszloy\\i18n\\Bootstrap"
     }
 }
