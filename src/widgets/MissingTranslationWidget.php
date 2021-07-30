@@ -1,14 +1,14 @@
 <?php
 
-namespace yarcode\i18n\widgets;
+namespace vaszloy\i18n\widgets;
 
-use yarcode\i18n\components\I18N;
+use vaszloy\i18n\components\I18N;
 use Yii;
 use yii\base\Widget;
 
 /**
  * Class MissingTranslationWidget
- * @package yarcode\i18n\widgets
+ * @package vaszloy\i18n\widgets
  */
 class MissingTranslationWidget extends Widget
 {

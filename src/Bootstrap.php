@@ -1,15 +1,15 @@
 <?php
 
-namespace yarcode\i18n;
+namespace vaszloy\i18n;
 
-use yarcode\i18n\commands\I18nCommand;
+use vaszloy\i18n\commands\I18nCommand;
 use Yii;
 use yii\base\BootstrapInterface;
 use yii\data\Pagination;
 
 /**
  * Class Bootstrap
- * @package yarcode\i18n
+ * @package vaszloy\i18n
  */
 class Bootstrap implements BootstrapInterface
 {
